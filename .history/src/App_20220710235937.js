@@ -5,15 +5,10 @@ import { ethers } from "ethers";
 import './App.css';
 import { useEffect } from "react";
 import { useState } from "react";
-import abi from "../src/utils/WavePortal.json"
 
 export default function App() {
 
   const [currentAccount, setCurrentAccount] = useState("");
-
-  const contractAddress = "0xa052021C7Bca1E5411B4Cd404bb2b203A6544337";
-
-  const contractABI = abi.abi;
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -68,8 +63,6 @@ export default function App() {
 
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
-      } else {
-        console.log("Ethereum object doesn't exist");
       }
     } catch (error) {
       console.log(error);
@@ -92,7 +85,7 @@ export default function App() {
         I am Didier and I'm a self taught developer, pretty cool right? Connect your Ethereum wallet and wave at me!
         </div>
 
-        <button className="waveButton" onClick={wave}>
+        <button className="waveButton" onClick={null}>
           Wave at Me
         </button>
         {!currentAccount && (
