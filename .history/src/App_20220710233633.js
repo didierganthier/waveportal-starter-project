@@ -43,10 +43,7 @@ export default function App() {
         return;
       }
 
-      const accounts = await ethereum.request({ method: "eth_requestAccounts" });
-
-      console.log("Connected", accounts[0]);
-      setCurrentAccount(accounts[0]);
+      const accounts = await ethereum.request({ method: "eth_requestAccounts" })
     } catch (error) {
       console.log(error);
     }
@@ -71,11 +68,6 @@ export default function App() {
         <button className="waveButton" onClick={null}>
           Wave at Me
         </button>
-        {!currentAccount && (
-          <button className="waveButton" onClick={connectWallet}>
-            Connect Wallet
-          </button>
-        )}
       </div>
     </div>
   );

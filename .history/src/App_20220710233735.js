@@ -71,11 +71,6 @@ export default function App() {
         <button className="waveButton" onClick={null}>
           Wave at Me
         </button>
-        {!currentAccount && (
-          <button className="waveButton" onClick={connectWallet}>
-            Connect Wallet
-          </button>
-        )}
       </div>
     </div>
   );

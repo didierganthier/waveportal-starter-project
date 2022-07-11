@@ -32,25 +32,7 @@ export default function App() {
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const connectWallet = async () => {
-    try {
-      const { ethereum } = window;
-
-      if(!ethereum) {
-        alert("Get Metamask!");
-        return;
-      }
-
-      const accounts = await ethereum.request({ method: "eth_requestAccounts" });
-
-      console.log("Connected", accounts[0]);
-      setCurrentAccount(accounts[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  }
 
   useEffect(()=> {
     checkIfWalletIsConnected();
@@ -65,17 +47,12 @@ export default function App() {
         </div>
 
         <div className="bio">
-        I am Didier and I'm a self taught developer, pretty cool right? Connect your Ethereum wallet and wave at me!
+        I am farza and I worked on self-driving cars so that's pretty cool right? Connect your Ethereum wallet and wave at me!
         </div>
 
         <button className="waveButton" onClick={null}>
           Wave at Me
         </button>
-        {!currentAccount && (
-          <button className="waveButton" onClick={connectWallet}>
-            Connect Wallet
-          </button>
-        )}
       </div>
     </div>
   );
