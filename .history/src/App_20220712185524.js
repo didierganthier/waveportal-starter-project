@@ -15,7 +15,7 @@ export default function App() {
   const [message, setMessage] = useState("");
   let [loading, setLoading] = useState(false);
 
-  const contractAddress = "0xeC97345DaeF1557Cd28C7D3f049F2C5A0D2a35f7";
+  const contractAddress = "0xDb1eC9dbD18481c41847A5Cd1eB8e9D3e64CEAc8";
 
   const contractABI = abi.abi;
 
@@ -110,7 +110,7 @@ export default function App() {
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
 
-        const waveTxn = await wavePortalContract.wave(message, { gasLimit: 300000 });
+        const waveTxn = await wavePortalContract.wave(message);
         setMessage("");
 
         console.log("Mining...", waveTxn.hash);
@@ -128,7 +128,6 @@ export default function App() {
       }
     } catch (error) {
       console.log(error);
-      setLoading(false)
     }
   };
 
