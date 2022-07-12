@@ -142,7 +142,7 @@ export default function App() {
   return (
     <div className="mainContainer" style={{ background: "url('background.jpg')", backgroundColor: '#09BEDE' }}>
       <div className={`dataContainer ${loading ? "loading" : ""}`}>
-        <div className="header">
+        <div className="header text-red-500">
           👋 Hey there!
         </div>
         <div className="bio">

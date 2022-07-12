@@ -17,7 +17,6 @@
   text-align: center;
   font-size: 32px;
   font-weight: 600;
-  color: #002D62;
 }
 
 .bio {
@@ -84,7 +83,7 @@ h1:before {
 
 .circle {
   display: inline-block;
-  background-color: #0483AD;
+  background-color: 0483AD;
   height: 50px;
   width: 50px;
   border-radius: 50%;

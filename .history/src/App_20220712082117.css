@@ -84,7 +84,7 @@ h1:before {
 
 .circle {
   display: inline-block;
-  background-color: #0483AD;
+  background-color: 0483AD;
   height: 50px;
   width: 50px;
   border-radius: 50%;

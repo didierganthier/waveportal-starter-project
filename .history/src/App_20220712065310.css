@@ -1,0 +1,50 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #09BEDE;
+}
+
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  margin-top: 64px;
+}
+
+.header {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.bio {
+  text-align: center;
+  color: white;
+  margin-top: 16px;
+}
+
+.waveButton {
+  cursor: pointer;
+  margin-top: 16px;
+  color: white;
+  background-color: #002D62;
+  font-size: x-large;
+  padding: 8px;
+  border: 0;
+  border-radius: 5px;
+  
+}
+
+
+.waveButton:hover {
+  color: white;
+  background-color: #0483AD;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  font-size: x-large;
+  opacity: 1; /* Firefox */
+}

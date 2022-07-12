@@ -13,7 +13,6 @@ export default function App() {
   const [currentAccount, setCurrentAccount] = useState("");
   const [allWaves, setAllWaves] = useState([]);
   const [message, setMessage] = useState("");
-  let [loading, setLoading] = useState(false);
 
   const contractAddress = "0xDb1eC9dbD18481c41847A5Cd1eB8e9D3e64CEAc8";
 
@@ -112,13 +111,10 @@ export default function App() {
 
         const waveTxn = await wavePortalContract.wave(message);
         setMessage("");
-
         console.log("Mining...", waveTxn.hash);
-        setLoading(true);
 
         await waveTxn.wait();
         console.log("Mined -- ", waveTxn.hash);
-        setLoading(false);
 
         count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
@@ -141,20 +137,23 @@ export default function App() {
 
   return (
     <div className="mainContainer" style={{ background: "url('background.jpg')", backgroundColor: '#09BEDE' }}>
-      <div className={`dataContainer ${loading ? "loading" : ""}`}>
-        <div className="header">
+
+      <div className="dataContainer">
+        <div className="header text-red-500">
           👋 Hey there!
         </div>
         <div className="bio">
           I am Didier and I'm a self taught developer, pretty cool right? Connect your Ethereum wallet and wave at me!
         </div>
         {currentAccount && (
-          <div style={{ background: "rgba(45, 209, 239, 0.43)", borderRadius: "8px", boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", backdropFilter: "blur(6.5px)", WebkitBackdropFilter: "blur(6.5px)", border: "1px solid rgba(45, 209, 239, 0.51)", marginTop: "20px", padding: "12px" }}>
-            <img src={`https://avatars.dicebear.com/api/adventurer/${0x6752e6D532dB26bD2E5074113a06B413A789CC74}.svg`} className="input" style={{ borderWidth: "1", padding: "5px", background: "#0483AD", borderRadius: "50px", boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", backdropFilter: "blur(6.5px)", WebkitBackdropFilter: "blur(6.5px)" }} width={50} height={50} alt="Profile" />
-            <textarea type="text" disabled={loading} onChange={(e) => setMessage(e.target.value)} value={message} cols="40" rows="5" onSubmit={wave} placeholder="What's happening ?" style={{ padding: "16px", borderRadius: "8px", outlineColor: "#09BEDE", borderWidth: "0", resize: "none", marginLeft: "10px", marginTop: "16px", width: "450px", height: "80px", marginBottom: "16px", fontSize: "x-large", backgroundColor: "#09BEDE", color: "#ffffff", }}></textarea>
-          </div>
+        <div style={{ background: "rgba(45, 209, 239, 0.43)", borderRadius: "8px", boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", backdropFilter: "blur(6.5px)", WebkitBackdropFilter: "blur(6.5px)", border: "1px solid rgba(45, 209, 239, 0.51)", marginTop: "20px", marginBottom: "20px", padding: "12px" }}>
+          <img src={`https://avatars.dicebear.com/api/adventurer/${0x6752e6D532dB26bD2E5074113a06B413A789CC74}.svg`} className="input" style={{borderWidth: "1", padding: "5px", background: "#0483AD", borderRadius: "50px", boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", backdropFilter: "blur(6.5px)", WebkitBackdropFilter: "blur(6.5px)"}} width={50} height={50} alt="Profile"/>
+          <input type="text" onChange={(e) => setMessage(e.target.value)} cols="40" rows="5" onSubmit={wave} placeholder="What's happening ?" style={{ padding: "16px", borderRadius: "8px", outlineColor: "#09BEDE", borderWidth: "0", resize: "none", marginLeft: "10px", marginTop: "16px", width: "450px", height: "80px", marginBottom: "16px", fontSize: "x-large", backgroundColor: "#09BEDE", color: "#ffffff",  }}/>
+        </div>
         )}
-        <input className="waveButton" onClick={wave} onSubmit={wave} disabled={loading} type="submit" value="Wave at Me"/>
+        <button className="waveButton" onClick={wave}>
+          Wave at Me
+        </button>
         {!currentAccount && (
           <button className="waveButton" onClick={connectWallet}>
             Connect Wallet
@@ -164,7 +163,7 @@ export default function App() {
           return (
             <div key={index} style={{ background: "rgba(45, 209, 239, 0.43)", borderRadius: "8px", boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", backdropFilter: "blur(6.5px)", WebkitBackdropFilter: "blur(6.5px)", border: "1px solid rgba(45, 209, 239, 0.51)", marginTop: "20px", marginBottom: "20px", padding: "12px" }}>
               <div style={{ display: "flex", alignItems: "center" }}>
-                <img src={`https://avatars.dicebear.com/api/adventurer/${0x6752e6D532dB26bD2E5074113a06B413A789CC74}.svg`} width={50} height={50} alt="Profile" />
+                <img src={`https://avatars.dicebear.com/api/adventurer/${0x6752e6D532dB26bD2E5074113a06B413A789CC74}.svg`} width={50} height={50} alt="Profile"/>
                 <div style={{ marginLeft: "4px" }}>
                   <div style={{ color: "white", fontWeight: "bold" }}> {wave.address}</div>
                   <div style={{ color: "white" }}>{wave.timestamp.toString()}</div>
@@ -175,15 +174,6 @@ export default function App() {
           )
         })}
       </div>
-      {loading && (
-        <div class="loaderBox">
-          <h1 data-text="It's loading…">It's loading…</h1>
-          <div class="loader">
-            <div class="circle"></div>
-            <div class="circle"></div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

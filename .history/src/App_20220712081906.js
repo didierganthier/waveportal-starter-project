@@ -142,7 +142,7 @@ export default function App() {
   return (
     <div className="mainContainer" style={{ background: "url('background.jpg')", backgroundColor: '#09BEDE' }}>
       <div className={`dataContainer ${loading ? "loading" : ""}`}>
-        <div className="header">
+        <div className="header text-red-500">
           👋 Hey there!
         </div>
         <div className="bio">
@@ -154,7 +154,7 @@ export default function App() {
             <textarea type="text" disabled={loading} onChange={(e) => setMessage(e.target.value)} value={message} cols="40" rows="5" onSubmit={wave} placeholder="What's happening ?" style={{ padding: "16px", borderRadius: "8px", outlineColor: "#09BEDE", borderWidth: "0", resize: "none", marginLeft: "10px", marginTop: "16px", width: "450px", height: "80px", marginBottom: "16px", fontSize: "x-large", backgroundColor: "#09BEDE", color: "#ffffff", }}></textarea>
           </div>
         )}
-        <input className="waveButton" onClick={wave} onSubmit={wave} disabled={loading} type="submit" value="Wave at Me"/>
+        <input className="waveButton" onClick={wave} disabled={loading} type="submit" value="Wave at Me"/>
         {!currentAccount && (
           <button className="waveButton" onClick={connectWallet}>
             Connect Wallet
