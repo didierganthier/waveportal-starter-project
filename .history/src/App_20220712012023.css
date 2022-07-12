@@ -37,14 +37,12 @@
   
 }
 
-
 .waveButton:hover {
   color: white;
   background-color: #0483AD;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white;
-  font-size: x-large;
+  color: red;
   opacity: 1; /* Firefox */
 }

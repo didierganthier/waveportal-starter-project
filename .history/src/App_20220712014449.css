@@ -33,14 +33,14 @@
   font-size: x-large;
   padding: 8px;
   border: 0;
-  border-radius: 5px;
+  border-radius: 50px;
   
 }
-
 
 .waveButton:hover {
   color: white;
   background-color: #0483AD;
+  border-radius: 50px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

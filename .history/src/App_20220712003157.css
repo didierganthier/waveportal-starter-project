@@ -29,22 +29,10 @@
   cursor: pointer;
   margin-top: 16px;
   color: white;
-  background-color: #002D62;
+  background-color: #89CFF0;
   font-size: x-large;
   padding: 8px;
   border: 0;
   border-radius: 5px;
   
-}
-
-
-.waveButton:hover {
-  color: white;
-  background-color: #0483AD;
-}
-
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white;
-  font-size: x-large;
-  opacity: 1; /* Firefox */
 }

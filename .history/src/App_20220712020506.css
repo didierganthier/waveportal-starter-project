@@ -30,17 +30,17 @@
   margin-top: 16px;
   color: white;
   background-color: #002D62;
-  font-size: x-large;
-  padding: 8px;
+  font-size: medium;
+  padding: 20px;
   border: 0;
-  border-radius: 5px;
-  
+  border-radius: 50px;
+  justify-content: right;
 }
-
 
 .waveButton:hover {
   color: white;
   background-color: #0483AD;
+  border-radius: 50px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

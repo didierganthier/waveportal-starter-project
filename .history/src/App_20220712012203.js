@@ -148,7 +148,7 @@ export default function App() {
         {currentAccount && (
         <div style={{ background: "rgba(45, 209, 239, 0.43)", borderRadius: "8px", boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", backdropFilter: "blur(6.5px)", WebkitBackdropFilter: "blur(6.5px)", border: "1px solid rgba(45, 209, 239, 0.51)", marginTop: "20px", marginBottom: "20px", padding: "12px" }}>
           <img src={`https://avatars.dicebear.com/api/adventurer/${0x6752e6D532dB26bD2E5074113a06B413A789CC74}.svg`} className="input" style={{borderWidth: "1", padding: "5px", background: "#0483AD", borderRadius: "50px", boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", backdropFilter: "blur(6.5px)", WebkitBackdropFilter: "blur(6.5px)"}} width={50} height={50} alt="Profile"/>
-          <textarea type="text" onChange={(e) => setMessage(e.target.value)} cols="40" rows="5" onSubmit={wave} placeholder="What's happening ?" style={{ padding: "16px", borderRadius: "8px", outlineColor: "#09BEDE", borderWidth: "0", resize: "none", marginLeft: "10px", marginTop: "16px", width: "450px", height: "80px", marginBottom: "16px", fontSize: "x-large", backgroundColor: "#09BEDE", color: "#ffffff",  }}></textarea>
+          <input type="text" onChange={(e) => setMessage(e.target.value)} onSubmit={wave} placeholder="Enter a message, it will be stored on the blockchain forever 😉" style={{ padding: "16px", borderRadius: "8px", outlineColor: "#09BEDE", borderWidth: "0", marginLeft: "10px", marginTop: "16px", width: "400px", height: "80px", marginBottom: "16px", backgroundColor: "#09BEDE", color: "#ffffff",  }} />
         </div>
         )}
         <button className="waveButton" onClick={wave}>
