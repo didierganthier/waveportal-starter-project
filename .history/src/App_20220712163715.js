@@ -15,7 +15,7 @@ export default function App() {
   const [message, setMessage] = useState("");
   let [loading, setLoading] = useState(false);
 
-  const contractAddress = "0xD7fF3661aa4633B7f2bf219d068FB4799083C18C";
+  const contractAddress = "0xDb1eC9dbD18481c41847A5Cd1eB8e9D3e64CEAc8";
 
   const contractABI = abi.abi;
 
