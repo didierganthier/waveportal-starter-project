@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/accessible-emoji */
 /* eslint-disable no-unused-vars */
 import * as React from "react";
@@ -11,9 +10,8 @@ import abi from "../src/utils/WavePortal.json"
 export default function App() {
 
   const [currentAccount, setCurrentAccount] = useState("");
-  const [allWaves, setAllWaves] = useState([]);
-  const [message, setMessage] = useState("");
 
+  const [allWaves, setAllWaves] = useState([]);
   const contractAddress = "0xDb1eC9dbD18481c41847A5Cd1eB8e9D3e64CEAc8";
 
   const contractABI = abi.abi;
@@ -37,7 +35,7 @@ export default function App() {
           });
         });
 
-        setAllWaves(wavesCleaned.reverse());
+        setAllWaves(wavesCleaned);
       }
     } catch (error) {
 
@@ -60,7 +58,6 @@ export default function App() {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
         setCurrentAccount(account);
-        getAllWaves();
       } else {
         console.log("No authorized account found");
       }
@@ -79,6 +76,7 @@ export default function App() {
       }
 
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+      getAllWaves();
 
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]);
@@ -88,16 +86,6 @@ export default function App() {
   };
 
   const wave = async () => {
-    if(!currentAccount){
-      alert("Connect your MetaMask wallet to continue!");
-      return;
-    }
-    
-    if(!message){
-      alert("Enter message to continue!");
-      return;
-    }
-    
     try {
       const { ethereum } = window;
 
@@ -109,8 +97,7 @@ export default function App() {
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
 
-        const waveTxn = await wavePortalContract.wave(message);
-        setMessage("");
+        const waveTxn = await wavePortalContract.wave();
         console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
@@ -118,7 +105,6 @@ export default function App() {
 
         count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
-        getAllWaves();
       } else {
         console.log("Ethereum object doesn't exist");
       }
@@ -128,25 +114,21 @@ export default function App() {
   };
 
   useEffect(() => {
-    getAllWaves();
-  },[])
-
-  useEffect(() => {
     checkIfWalletIsConnected();
-  }, []);
+  }, [])
 
   return (
-    <div className="mainContainer" style={{ background: "url('background.jpg')", backgroundColor: '#09BEDE' }}>
+    <div className="mainContainer">
 
       <div className="dataContainer">
-        <div className="header text-red-500">
+        <div className="header">
           👋 Hey there!
         </div>
 
         <div className="bio">
           I am Didier and I'm a self taught developer, pretty cool right? Connect your Ethereum wallet and wave at me!
         </div>
-        <input type="text" maxLength={200} minLength={10} onChange={(e) => setMessage(e.target.value)} onSubmit={wave} placeholder="Enter a message, it will be stored on the blockchain forever 😉"  style={{ padding: "16px", borderRadius: "8px", outlineColor: "#09BEDE", borderWidth: "1px" , marginTop: "16px", marginBottom: "16px"}}/>
+
         <button className="waveButton" onClick={wave}>
           Wave at Me
         </button>
@@ -157,7 +139,7 @@ export default function App() {
         )}
         {allWaves.map((wave, index) => {
           return (
-            <div key={index} style={{ background: "rgba(45, 209, 239, 0.43)",  borderRadius: "8px", boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)" , backdropFilter: "blur(6.5px)", WebkitBackdropFilter: "blur(6.5px)",border: "1px solid rgba(45, 209, 239, 0.51)", marginTop: "20px", marginBottom: "20px", padding: "12px" }}>
+            <div key={index} style={{ backgroundColor: "oldlace", marginTop: "16px", padding: "8px" }}>
               <div>Address: {wave.address}</div>
               <div>Time: {wave.timestamp.toString()}</div>
               <div>Message: {wave.message}</div>

@@ -136,7 +136,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="mainContainer" style={{ background: "url('background.jpg')", backgroundColor: '#09BEDE' }}>
+    <div className="mainContainer" style={{ background: "url('background.jpg')" }}>
 
       <div className="dataContainer">
         <div className="header text-red-500">

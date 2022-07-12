@@ -37,7 +37,7 @@ export default function App() {
           });
         });
 
-        setAllWaves(wavesCleaned.reverse());
+        setAllWaves(wavesCleaned);
       }
     } catch (error) {
 
@@ -97,7 +97,7 @@ export default function App() {
       alert("Enter message to continue!");
       return;
     }
-    
+
     try {
       const { ethereum } = window;
 
@@ -110,7 +110,6 @@ export default function App() {
         console.log("Retrieved total wave count...", count.toNumber());
 
         const waveTxn = await wavePortalContract.wave(message);
-        setMessage("");
         console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
@@ -127,26 +126,26 @@ export default function App() {
     }
   };
 
-  useEffect(() => {
-    getAllWaves();
-  },[])
+  // useEffect(() => {
+  //   getAllWaves();
+  // },[])
 
   useEffect(() => {
     checkIfWalletIsConnected();
   }, []);
 
   return (
-    <div className="mainContainer" style={{ background: "url('background.jpg')", backgroundColor: '#09BEDE' }}>
+    <div className="mainContainer">
 
       <div className="dataContainer">
-        <div className="header text-red-500">
+        <div className="header">
           👋 Hey there!
         </div>
 
         <div className="bio">
           I am Didier and I'm a self taught developer, pretty cool right? Connect your Ethereum wallet and wave at me!
         </div>
-        <input type="text" maxLength={200} minLength={10} onChange={(e) => setMessage(e.target.value)} onSubmit={wave} placeholder="Enter a message, it will be stored on the blockchain forever 😉"  style={{ padding: "16px", borderRadius: "8px", outlineColor: "#09BEDE", borderWidth: "1px" , marginTop: "16px", marginBottom: "16px"}}/>
+        <input type="text" maxLength={200} minLength={10} onChange={(e) => setMessage(e.target.value)} onSubmit={wave} placeholder="Enter a message, it will be stored on the blockchain forever 😉"  style={{ padding: "16px", borderRadius: "8px", borderWidth: "1px" , marginTop: "16px", marginBottom: "16px"}}/>
         <button className="waveButton" onClick={wave}>
           Wave at Me
         </button>
@@ -155,9 +154,9 @@ export default function App() {
             Connect Wallet
           </button>
         )}
-        {allWaves.map((wave, index) => {
+        {allWaves.reverse.map((wave, index) => {
           return (
-            <div key={index} style={{ background: "rgba(45, 209, 239, 0.43)",  borderRadius: "8px", boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)" , backdropFilter: "blur(6.5px)", WebkitBackdropFilter: "blur(6.5px)",border: "1px solid rgba(45, 209, 239, 0.51)", marginTop: "20px", marginBottom: "20px", padding: "12px" }}>
+            <div key={index} style={{ backgroundColor: "oldlace", marginTop: "16px", padding: "8px" }}>
               <div>Address: {wave.address}</div>
               <div>Time: {wave.timestamp.toString()}</div>
               <div>Message: {wave.message}</div>

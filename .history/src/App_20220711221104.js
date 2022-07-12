@@ -7,6 +7,7 @@ import './App.css';
 import { useEffect } from "react";
 import { useState } from "react";
 import abi from "../src/utils/WavePortal.json"
+import { createAvatar } from '@dicebear/avatars';
 
 export default function App() {
 
@@ -17,6 +18,11 @@ export default function App() {
   const contractAddress = "0xDb1eC9dbD18481c41847A5Cd1eB8e9D3e64CEAc8";
 
   const contractABI = abi.abi;
+
+  let svg = createAvatar({
+    seed: currentAccount,
+    // ... and other options
+  });
 
   const getAllWaves = async () => {
     try {

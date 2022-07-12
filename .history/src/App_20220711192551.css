@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: #09BEDE;
+  margin-top: 64px;
 }
 
 .dataContainer {
@@ -10,7 +10,6 @@
   flex-direction: column;
   justify-content: center;
   max-width: 600px;
-  margin-top: 64px;
 }
 
 .header {
@@ -21,7 +20,7 @@
 
 .bio {
   text-align: center;
-  color: white;
+  color: gray;
   margin-top: 16px;
 }
 

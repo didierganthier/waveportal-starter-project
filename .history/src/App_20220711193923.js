@@ -136,7 +136,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="mainContainer" style={{ background: "url('background.jpg')", backgroundColor: '#09BEDE' }}>
+    <div className="mainContainer" style={{ background: "url('background.jpg')" }}>
 
       <div className="dataContainer">
         <div className="header text-red-500">
@@ -146,7 +146,7 @@ export default function App() {
         <div className="bio">
           I am Didier and I'm a self taught developer, pretty cool right? Connect your Ethereum wallet and wave at me!
         </div>
-        <input type="text" maxLength={200} minLength={10} onChange={(e) => setMessage(e.target.value)} onSubmit={wave} placeholder="Enter a message, it will be stored on the blockchain forever 😉"  style={{ padding: "16px", borderRadius: "8px", outlineColor: "#09BEDE", borderWidth: "1px" , marginTop: "16px", marginBottom: "16px"}}/>
+        <input type="text" maxLength={200} minLength={10} onChange={(e) => setMessage(e.target.value)} onSubmit={wave} placeholder="Enter a message, it will be stored on the blockchain forever 😉"  style={{ padding: "16px", borderRadius: "8px", borderWidth: "1px" , marginTop: "16px", marginBottom: "16px"}}/>
         <button className="waveButton" onClick={wave}>
           Wave at Me
         </button>

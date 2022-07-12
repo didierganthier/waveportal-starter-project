@@ -7,6 +7,8 @@ import './App.css';
 import { useEffect } from "react";
 import { useState } from "react";
 import abi from "../src/utils/WavePortal.json"
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/avatars-identicon-sprites';
 
 export default function App() {
 

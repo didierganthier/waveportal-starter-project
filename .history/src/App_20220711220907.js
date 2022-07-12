@@ -7,6 +7,7 @@ import './App.css';
 import { useEffect } from "react";
 import { useState } from "react";
 import abi from "../src/utils/WavePortal.json"
+import { createAvatar } from '@dicebear/avatars';
 
 export default function App() {
 
@@ -17,6 +18,11 @@ export default function App() {
   const contractAddress = "0xDb1eC9dbD18481c41847A5Cd1eB8e9D3e64CEAc8";
 
   const contractABI = abi.abi;
+
+  let svg = createAvatar({
+    seed: currentAccount,
+    // ... and other options
+  });
 
   const getAllWaves = async () => {
     try {
@@ -158,6 +164,7 @@ export default function App() {
         {allWaves.map((wave, index) => {
           return (
             <div key={index} style={{ background: "rgba(45, 209, 239, 0.43)",  borderRadius: "8px", boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)" , backdropFilter: "blur(6.5px)", WebkitBackdropFilter: "blur(6.5px)",border: "1px solid rgba(45, 209, 239, 0.51)", marginTop: "20px", marginBottom: "20px", padding: "12px" }}>
+              <svg>{svg}</svg>
               <div>Address: {wave.address}</div>
               <div>Time: {wave.timestamp.toString()}</div>
               <div>Message: {wave.message}</div>
